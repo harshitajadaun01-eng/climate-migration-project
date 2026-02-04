@@ -2,6 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 import numpy as np # Used for generating dynamic trend curves
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 app = FastAPI()
 
@@ -13,7 +18,7 @@ app.add_middleware(
 )
 
 
-API_KEY = "5aea50bf71c7108281cedbaba33ab152"
+API_KEY = os.getenv("API_KEY")
 
 def calculate_heat_index(temp_c, humidity):
     """
